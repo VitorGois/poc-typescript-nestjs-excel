@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@gorila-bot/eslint-config-gorila-ts"
+  ]
+}
