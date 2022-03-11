@@ -1,8 +1,7 @@
 // TODO: Delete this example file
-import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Max, Min, MinLength, Type, ValidateNested } from '@gorila-bot/nestjs-core';
+import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Max, Min, MinLength, OneOf, Type, ValidateNested } from '@gorila-bot/nestjs-core';
 
 import { UserAddressState, UserGender, UserOneOf } from './user.enum';
-import { OneOf } from '.pnpm/@gorila-bot+nestjs-core@5.1.0/node_modules/@gorila-bot/nestjs-core';
 
 export class UserAddress {
 
