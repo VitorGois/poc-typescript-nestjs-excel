@@ -25,7 +25,7 @@
     "test": "jest --verbose --forceExit --passWithNoTests --testTimeout=30000 --config .config/jest/.jestrc.json"
   },
   "dependencies": {
-    "@gorila-bot/nestjs-core": "5.0.1"
+    "@gorila-bot/nestjs-core": "5.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "16.2.1",

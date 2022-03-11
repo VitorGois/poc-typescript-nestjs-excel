@@ -13,7 +13,7 @@ export class UserController {
   ) { }
 
   @Get({ type: UserCollection })
-  public getUser(): User[] {
+  public getUser(): UserCollection {
     return this.userService.readUsers();
   }
 

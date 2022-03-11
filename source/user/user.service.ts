@@ -1,9 +1,10 @@
 // TODO: Delete this example file
 import { ContextService, Injectable, NotFoundException, uuidV4 } from '@gorila-bot/nestjs-core';
 
-import { JokeService } from '../joke/joke.service';
-import { UserCreateDto, UserUpdateDto } from './user.dto';
+import { ZipService } from '../zip/zip.service';
+import { UserCollection, UserCreateDto, UserUpdateDto } from './user.dto';
 import { User } from './user.entity';
+import { UserAddressState } from './user.enum';
 
 @Injectable()
 export class UserService {
@@ -12,14 +13,17 @@ export class UserService {
 
   public constructor(
     private readonly contextService: ContextService,
-    private readonly jokeService: JokeService,
+    private readonly zipService: ZipService,
   ) { }
 
   /**
    * Read all users.
    */
-  public readUsers(): User[] {
-    return this.USER_DATABASE;
+  public readUsers(): UserCollection {
+    return {
+      count: this.USER_DATABASE.length,
+      records: this.USER_DATABASE,
+    };
   }
 
   /**
@@ -41,13 +45,26 @@ export class UserService {
    * @param params
    */
   public async createUser(params: UserCreateDto): Promise<User> {
-    const joke = await this.jokeService.readRandomJoke();
+    const { age, birthYear, address } = params;
+    const { zip } = address;
+
+    const { logradouro, bairro, localidade, uf } = await this.zipService.readZip(zip);
 
     const user: User = {
       id: uuidV4(),
       originId: this.contextService.getRequestId(),
-      luckyJoke: joke.value,
+      // Age and birth year are mutually exclusive, calculate the other based on the existing
+      // This logic is poor and just for example purposes, it has a +-1 error due to not knowing day of birth
+      age: age ?? new Date().getFullYear() - birthYear,
+      birthYear: birthYear ?? new Date().getFullYear() - age,
       ...params,
+      address: {
+        street: logradouro,
+        district: bairro,
+        city: localidade,
+        state: uf as UserAddressState,
+        ...address,
+      },
     };
 
     this.USER_DATABASE.push(user);

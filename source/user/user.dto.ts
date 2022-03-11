@@ -5,7 +5,7 @@ import { User } from './user.entity';
 
 export class UserIdDto extends PickType(User, [ 'id' ]) { }
 
-export class UserCreateDto extends OmitType(User, [ 'id', 'originId', 'luckyJoke' ]) { }
+export class UserCreateDto extends OmitType(User, [ 'id', 'originId' ]) { }
 
 export class UserUpdateDto extends PickType(User, [ 'email', 'phone' ]) { }
 
