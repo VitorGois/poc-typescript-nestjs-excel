@@ -1,0 +1,82 @@
+image: node:16-slim
+
+definitions:
+  steps:
+    - step: &clear-cache
+        name: 'Clear Node Cache'
+        script:
+          - pipe: atlassian/bitbucket-clear-cache:3.1.1
+            variables:
+              BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+              BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+              CACHES: [ 'node' ]
+        condition:
+          changesets:
+            includePaths:
+              - './package.json'
+
+    - step: &install-dependencies
+        name: 'Install Dependencies'
+        caches:
+          - node
+        script:
+          - npm i -g pnpm
+          - pnpm i --frozen-lockfile
+
+    - step: &lint-check
+        name: 'Run Lint Check'
+        caches:
+          - node
+        script:
+          - npm i -g pnpm
+          - pnpm lint
+
+    - step: &unit-test
+        name: 'Run Unit Tests'
+        caches:
+          - node
+        script:
+          - npm i -g pnpm
+          - pnpm test
+
+    # - step: &deploy-aws
+    #     name: 'Deploy to AWS'
+    #     caches:
+    #       - node
+    #     script:
+    #       - ...
+
+pipelines:
+  default:
+    - step: *clear-cache
+    - step: *install-dependencies
+    - parallel:
+      - step: *lint-check
+      - step:
+          <<: *unit-test
+          deployment: test
+
+  branches:
+    develop:
+      - step: *clear-cache
+      - step: *install-dependencies
+      - parallel:
+        - step: *lint-check
+        - step:
+            <<: *unit-test
+            deployment: development
+      # - step:
+      #     <<: *deploy-aws
+      #     deployment: development
+
+    master:
+      - step: *clear-cache
+      - step: *install-dependencies
+      - parallel:
+        - step: *lint-check
+        - step:
+            <<: *unit-test
+            deployment: production
+      # - step:
+      #     <<: *deploy-aws
+      #     deployment: production
