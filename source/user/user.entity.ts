@@ -1,49 +1,74 @@
 // TODO: Delete this example file
-import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Min, MinLength, Type, ValidateNested } from '@gorila-bot/nestjs-core';
+import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Max, Min, MinLength, Type, ValidateNested } from '@gorila-bot/nestjs-core';
 
-import { UserGender } from './user.enum';
+import { UserAddressState, UserGender, UserOneOf } from './user.enum';
+import { OneOf } from '.pnpm/@gorila-bot+nestjs-core@5.1.0/node_modules/@gorila-bot/nestjs-core';
 
 export class UserAddress {
 
-  @IsString() @IsNotEmpty()
-  public street: string;
-
-  @IsString() @IsNotEmpty()
-  public city: string;
-
   @IsNumberString() @Length(5, 8)
   public zip: string;
+
+  @IsString() @IsNotEmpty()
+  public number: string;
+
+  @IsOptional()
+  @IsString() @IsNotEmpty()
+  public details?: string;
+
+  /** Address street, populated through ZIP enrichment. */
+  @IsOptional()
+  @IsString() @IsNotEmpty()
+  public street?: string;
+
+  /** Address district, populated through ZIP enrichment. */
+  @IsOptional()
+  @IsString() @IsNotEmpty()
+  public district?: string;
+
+  /** Address city, populated through ZIP enrichment. */
+  @IsOptional()
+  @IsString() @IsNotEmpty()
+  public city?: string;
+
+  /** Address state, populated through ZIP enrichment. */
+  @IsOptional()
+  @IsIn(Object.values(UserAddressState))
+  public state?: UserAddressState;
 
 }
 
 export class User {
 
   /** Automatically generated user ID. */
-  @IsString() @IsUUID()
-  public id?: string;
+  @IsUUID()
+  public id: string;
 
-  /** Extracted request ID which triggered user creation. */
+  /** Request ID which triggered user creation. */
   @IsString()
-  public originId?: string;
-
-  /** Remotely fetch random joke during creation. */
-  @IsString()
-  public luckyJoke?: string;
+  public originId: string;
 
   @IsString() @MinLength(3)
-  public givenName: string;
+  public name: string;
 
   @IsString() @MinLength(3)
-  public familyName: string;
+  public surname: string;
 
   @Matches(/(?:\d{3}\.){2}\d{3}-\d{2}/)
   public taxId: string;
 
-  @IsNumber() @Min(0)
-  public age: number;
-
   @IsIn(Object.values(UserGender))
   public gender: UserGender;
+
+  @OneOf(UserOneOf.USER_AGE_BIRTH_YEAR)
+  @IsNumber() @Min(0)
+  public age?: number;
+
+  @OneOf(UserOneOf.USER_AGE_BIRTH_YEAR)
+  @IsNumber()
+  @Min(new Date().getFullYear() - 100)
+  @Max(new Date().getFullYear())
+  public birthYear?: number;
 
   @IsOptional()
   @IsEmail()
