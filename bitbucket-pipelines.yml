@@ -39,6 +39,7 @@ definitions:
           - npm i -g pnpm
           - pnpm test
 
+    # TODO: Add cloud deploy step
     # - step: &deploy-aws
     #     name: 'Deploy to AWS'
     #     caches:
@@ -65,6 +66,7 @@ pipelines:
         - step:
             <<: *unit-test
             deployment: development
+      # TODO: Enable cloud deploy step
       # - step:
       #     <<: *deploy-aws
       #     deployment: development
@@ -77,6 +79,7 @@ pipelines:
         - step:
             <<: *unit-test
             deployment: production
+      # TODO: Enable cloud deploy step
       # - step:
       #     <<: *deploy-aws
       #     deployment: production
