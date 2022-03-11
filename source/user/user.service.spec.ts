@@ -1,6 +1,7 @@
 // TODO: Delete this example file
 import { AppModule, HttpStatus, uuidV4 } from '@gorila-bot/nestjs-core';
 
+import { UserCreateDto } from './user.dto';
 import { User } from './user.entity';
 import { UserGender } from './user.enum';
 import { UserModule } from './user.module';
@@ -21,16 +22,15 @@ describe('UserService', () => {
 
   describe('createUser', () => {
     it('should create an user', async () => {
-      const userData: User = {
-        givenName: 'Jane',
-        familyName: 'Doe',
+      const userData: UserCreateDto = {
+        name: 'Jane',
+        surname: 'Doe',
         taxId: '123.456.789-00',
         age: 28,
         gender: UserGender.FEMALE,
         address: {
-          street: '1st street',
-          city: 'New York',
-          zip: '12345',
+          zip: '03030000',
+          number: '100',
         },
       };
 
