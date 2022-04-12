@@ -6,8 +6,8 @@ This template offers a boilerplate to quick start new projects with a set of goo
 
 ## Features
 
-- Customized [framework](https://bitbucket.org/gorilainvest/nestjs-core/src/master/) based on [NestJS](https://nestjs.com/), adding extended functionalities like improved http, logging, metrics and documentation.
-- Static code syntax and styling analysis based on [ESLint](https://eslint.org/) configured with [eslint-config-gorila-ts](https://bitbucket.org/gorilainvest/eslint-config-gorila-ts/src/master/) plugin.
+- Customized [framework](https://github.com/gorilainvest/nestjs-core) based on [NestJS](https://nestjs.com/), adding extended functionalities like improved http, logging, metrics and documentation.
+- Static code syntax and styling analysis based on [ESLint](https://eslint.org/) configured with [eslint-config-gorila-ts](https://github.com/gorilainvest/eslint-config-gorila-ts) plugin.
 - Testing framework [Jest](https://jestjs.io/) configured for Typescript.
 - Git hooks based on [Husky](https://typicode.github.io/husky/#/) to apply [commitlint](https://commitlint.js.org/#/) and [lint-staged](https://www.npmjs.com/package/lint-staged?activeTab=readme).
 - Live reload based on [ts-node-dev](https://www.npmjs.com/package/ts-node-dev).
@@ -90,7 +90,7 @@ Below some guidelines when contributing to this repository.
 
 Domain organization and code patterns follows the same philosophy of the underlying [NestJS](https://docs.nestjs.com/) framework.
 
-Details regarding wrapper functionalities provided by [@gorila-bot/nestjs-core](https://bitbucket.org/gorilainvest/nestjs-core/src/master/) are available at its [documentation](https://bitbucket.org/gorilainvest/nestjs-core/src/master/), as well at this [video overview](https://gorila.atlassian.net/wiki/spaces/BEC/pages/2418999314/NestJS+Core+-+Overview).
+Details regarding wrapper functionalities provided by [@gorila-bot/nestjs-core](https://github.com/gorilainvest/nestjs-core) are available at its [documentation](https://github.com/gorilainvest/nestjs-core), as well at this [video overview](https://gorila.atlassian.net/wiki/spaces/BEC/pages/2418999314/NestJS+Core+-+Overview).
 
 It is strongly recommended to be familiarized with both prior to contributing.
 
@@ -123,7 +123,7 @@ pnpm dev
 
 ### Linting
 
-This repository is configured with Gorila linting rules available [eslint-config-gorila-ts](https://bitbucket.org/gorilainvest/eslint-config-gorila-ts/src/master/).
+This repository is configured with Gorila linting rules available [eslint-config-gorila-ts](https://github.com/gorilainvest/eslint-config-gorila-ts).
 
 It is recommended to configure your IDE to automatically apply auto-fixes. Details on how to do so for IntelliJ, VSCode, Sublime Text and Atom are available at the following article:
 
