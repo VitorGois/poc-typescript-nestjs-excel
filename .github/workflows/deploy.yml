@@ -1,0 +1,55 @@
+name: Build Image, Push to ECR & Deploy to EKS
+on:
+  push:
+    branches: [ master, develop ]
+
+jobs:
+  test:
+    name: Build Image, Push to ECR & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 'Checkout Code'
+      uses: actions/checkout@v2
+
+    - name: "[Development] Configure Environment"
+      if: endsWith(github.ref, '/develop')
+      run: |
+        echo "NODE_ENV=development" >> .env
+        echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}" > .env
+
+    - name: "[Production] Configure Environment"
+      if: endsWith(github.ref, '/master')
+      run: |
+        echo "NODE_ENV=production" >> .env
+        echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}" > .env
+
+    - name: '[Development] Configure AWS credentials'
+      if: endsWith(github.ref, '/develop')
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: '[Production] Configure AWS Credentials'
+      if: endsWith(github.ref, '/master')
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: 'Login to AWS ECR'
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: 'Build Container Image'
+      run: |
+        export ECR_URI=${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}
+        export ECR_IMAGE=${GITHUB_REF##*/}-$(echo ${GITHUB_SHA} | cut -c 1-8)
+        echo "ECR_TAG=$ECR_URI:$ECR_IMAGE" >> $GITHUB_ENV
+        docker build -t $ECR_URI:$ECR_IMAGE .
+
+    - name: 'Push Image to ECR'
+      run: docker push $ECR_TAG

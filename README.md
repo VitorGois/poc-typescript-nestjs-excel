@@ -16,57 +16,7 @@ This template offers a boilerplate to quick start new projects with a set of goo
 
 ## Usage
 
-These steps will guide you on how to setup a new BitBucket repository based on this template with working CI/CD.
-
-1\. Open [BitBucket Import](https://bitbucket.org/repo/import) tool and fill it according to the following:
-
-**Old Repository**
-- URL: https://bitbucket.org/gorilainvest/template-nestjs/src/master/
-- Requires Authorization: Yes
-- Username: Your BitBucket username
-- Password: Your BitBucket password
-
-**New Repository**
-- Workspace: GorilaInvest
-- Project: Your squad project, preferably configured with default reviewers and branching model
-- Repository: Your new repository name
-
-2\. Click **Import Repository**, wait for procedures to complete and navigate to your new repository.
-
-3\. At **Settings** > **Workflow** > **Branching model**, click **Enable inherited settings**.
-
-4\. At **Settings** > **Workflow** > **Branch permissions**, click **Add a branch permission**, and configure as following:
-
-- Select branch: By type > Development, ensure your squad project is correctly configured
-- Write access: Nobody
-- Merge via pull requests: Everybody
-- Merge checks: Select all, and increase **Check for at least 1 approval** to **2**
-- Repeat these step for branch type Production
-
-5\. At **Settings** > **Pipelines** > **Settings**, click **Enable Pipelines**.
-
-6\. At **Settings** > **Pipelines** > **Repository variables**, add the following:
-
-- AWS_REGION: us-east-2
-- BITBUCKET_USERNAME: gorila_deployer
-- BITBUCKET_APP_PASSWORD: [Ask your leader]
-- NPM_TOKEN: [Ask your leader]
-
-7\. At **Settings** > **Pipelines** > **Deployments**, erase existing examples and add the following environments:
-
-**test**
-- AWS_ACCESS_KEY_ID: AKIA2CTPCBPL2F4JIX7Q
-- AWS_SECRET_ACCESS_KEY: [Ask your leader]
-
-**development**
-- AWS_ACCESS_KEY_ID: AKIA2CTPCBPL2F4JIX7Q
-- AWS_SECRET_ACCESS_KEY: [Ask your leader]
-
-**production**
-- AWS_ACCESS_KEY_ID: AKIAWJE4GWFKQA43HGOR
-- AWS_SECRET_ACCESS_KEY: [Ask your leader]
-
-Repository related configurations are now done!
+Clone this repository using GitHub templates.
 
 To continue with code related adjustments simply search for `TODO` keywords within the new repository for further instructions.
 
