@@ -1,5 +1,5 @@
 // TODO: Delete this example file
-import { ApiProperty, IsNumber, Min, OmitType, PickType, Type, ValidateNested } from '@gorila-bot/nestjs-core';
+import { IsNumber, IsObject, Min, OmitType, PickType } from '@gorila-bot/nestjs-core';
 
 import { User } from './user.entity';
 
@@ -14,9 +14,7 @@ export class UserCollection {
   @IsNumber() @Min(0)
   public count: number;
 
-  @ApiProperty({ type: [ User ] })
-  @ValidateNested({ each: true })
-  @Type(() => User)
+  @IsObject(User, { each: true })
   public records: User[];
 
 }

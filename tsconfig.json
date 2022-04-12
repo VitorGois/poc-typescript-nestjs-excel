@@ -12,7 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "disableSourceOfProjectReferenceRedirect": true
+    "emitDecoratorMetadata": true
   }
 }

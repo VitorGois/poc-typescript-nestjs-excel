@@ -1,5 +1,5 @@
 // TODO: Delete this example file
-import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Max, Min, MinLength, OneOf, Type, ValidateNested } from '@gorila-bot/nestjs-core';
+import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Max, Min, MinLength, OneOf } from '@gorila-bot/nestjs-core';
 
 import { UserAddressState, UserGender, UserOneOf } from './user.enum';
 
@@ -77,9 +77,7 @@ export class User {
   @IsNumberString() @Length(10, 11)
   public phone?: string;
 
-  @ValidateNested()
-  @Type(() => UserAddress)
-  @IsObject()
+  @IsObject(UserAddress)
   public address: UserAddress;
 
 }

@@ -6,8 +6,8 @@ This template offers a boilerplate to quick start new projects with a set of goo
 
 ## Features
 
-- Customized [framework](https://bitbucket.org/gorilainvest/nestjs-core/src/master/) based on [NestJS](https://nestjs.com/), adding extended functionalities like improved http, logging, metrics and documentation.
-- Static code syntax and styling analysis based on [ESLint](https://eslint.org/) configured with [eslint-config-gorila-ts](https://bitbucket.org/gorilainvest/eslint-config-gorila-ts/src/master/) plugin.
+- Customized [framework](https://github.com/gorilainvest/nestjs-core) based on [NestJS](https://nestjs.com/), adding extended functionalities like improved http, logging, metrics and documentation.
+- Static code syntax and styling analysis based on [ESLint](https://eslint.org/) configured with [eslint-config-gorila-ts](https://github.com/gorilainvest/eslint-config-gorila-ts) plugin.
 - Testing framework [Jest](https://jestjs.io/) configured for Typescript.
 - Git hooks based on [Husky](https://typicode.github.io/husky/#/) to apply [commitlint](https://commitlint.js.org/#/) and [lint-staged](https://www.npmjs.com/package/lint-staged?activeTab=readme).
 - Live reload based on [ts-node-dev](https://www.npmjs.com/package/ts-node-dev).
@@ -16,57 +16,7 @@ This template offers a boilerplate to quick start new projects with a set of goo
 
 ## Usage
 
-These steps will guide you on how to setup a new BitBucket repository based on this template with working CI/CD.
-
-1\. Open [BitBucket Import](https://bitbucket.org/repo/import) tool and fill it according to the following:
-
-**Old Repository**
-- URL: https://bitbucket.org/gorilainvest/template-nestjs/src/master/
-- Requires Authorization: Yes
-- Username: Your BitBucket username
-- Password: Your BitBucket password
-
-**New Repository**
-- Workspace: GorilaInvest
-- Project: Your squad project, preferably configured with default reviewers and branching model
-- Repository: Your new repository name
-
-2\. Click **Import Repository**, wait for procedures to complete and navigate to your new repository.
-
-3\. At **Settings** > **Workflow** > **Branching model**, click **Enable inherited settings**.
-
-4\. At **Settings** > **Workflow** > **Branch permissions**, click **Add a branch permission**, and configure as following:
-
-- Select branch: By type > Development, ensure your squad project is correctly configured
-- Write access: Nobody
-- Merge via pull requests: Everybody
-- Merge checks: Select all, and increase **Check for at least 1 approval** to **2**
-- Repeat these step for branch type Production
-
-5\. At **Settings** > **Pipelines** > **Settings**, click **Enable Pipelines**.
-
-6\. At **Settings** > **Pipelines** > **Repository variables**, add the following:
-
-- AWS_REGION: us-east-2
-- BITBUCKET_USERNAME: gorila_deployer
-- BITBUCKET_APP_PASSWORD: [Ask your leader]
-- NPM_TOKEN: [Ask your leader]
-
-7\. At **Settings** > **Pipelines** > **Deployments**, erase existing examples and add the following environments:
-
-**test**
-- AWS_ACCESS_KEY_ID: AKIA2CTPCBPL2F4JIX7Q
-- AWS_SECRET_ACCESS_KEY: [Ask your leader]
-
-**development**
-- AWS_ACCESS_KEY_ID: AKIA2CTPCBPL2F4JIX7Q
-- AWS_SECRET_ACCESS_KEY: [Ask your leader]
-
-**production**
-- AWS_ACCESS_KEY_ID: AKIAWJE4GWFKQA43HGOR
-- AWS_SECRET_ACCESS_KEY: [Ask your leader]
-
-Repository related configurations are now done!
+Clone this repository using GitHub templates.
 
 To continue with code related adjustments simply search for `TODO` keywords within the new repository for further instructions.
 
@@ -140,7 +90,7 @@ Below some guidelines when contributing to this repository.
 
 Domain organization and code patterns follows the same philosophy of the underlying [NestJS](https://docs.nestjs.com/) framework.
 
-Details regarding wrapper functionalities provided by [@gorila-bot/nestjs-core](https://bitbucket.org/gorilainvest/nestjs-core/src/master/) are available at its [documentation](https://bitbucket.org/gorilainvest/nestjs-core/src/master/), as well at this [video overview](https://gorila.atlassian.net/wiki/spaces/BEC/pages/2418999314/NestJS+Core+-+Overview).
+Details regarding wrapper functionalities provided by [@gorila-bot/nestjs-core](https://github.com/gorilainvest/nestjs-core) are available at its [documentation](https://github.com/gorilainvest/nestjs-core), as well at this [video overview](https://gorila.atlassian.net/wiki/spaces/BEC/pages/2418999314/NestJS+Core+-+Overview).
 
 It is strongly recommended to be familiarized with both prior to contributing.
 
@@ -173,7 +123,7 @@ pnpm dev
 
 ### Linting
 
-This repository is configured with Gorila linting rules available [eslint-config-gorila-ts](https://bitbucket.org/gorilainvest/eslint-config-gorila-ts/src/master/).
+This repository is configured with Gorila linting rules available [eslint-config-gorila-ts](https://github.com/gorilainvest/eslint-config-gorila-ts).
 
 It is recommended to configure your IDE to automatically apply auto-fixes. Details on how to do so for IntelliJ, VSCode, Sublime Text and Atom are available at the following article:
 
