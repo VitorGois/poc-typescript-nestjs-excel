@@ -9,7 +9,7 @@ COPY .env .npmrc package.json pnpm-lock.yaml /build/
 
 # Install dependencies
 RUN npm i -g pnpm dotenv-cli
-RUN dotenv -- pnpm i --frozen-lockfile
+RUN dotenv -- pnpm i --frozen-lockfile --ignore-scripts
 
 # Copy source code and build application
 COPY . /build
@@ -27,7 +27,7 @@ COPY --from=build /build/dist /app
 
 # Install production dependencies
 RUN npm i -g pnpm dotenv-cli
-RUN dotenv -- pnpm i --frozen-lockfile --prod
+RUN dotenv -- pnpm i --frozen-lockfile --ignore-scripts --prod
 
 # Run application
 CMD [ "pnpm", "start" ]

@@ -24,11 +24,11 @@ By removing this setup section, further topics of this `README.md` can already b
 
 ---
 
-> // TODO: Add application name and description
+> // TODO: Configure application title and description
 
-# {{applicationName}}
+# {{appTitle}}
 
-{{applicationDescription}}
+{{appDescription}}
 
 ## Local Setup
 
