@@ -1,16 +1,28 @@
-import { AppEnvironment, AppModule, ConfigModule } from '@gorila-bot/nestjs-core';
+import { AppEnvironment, AppModule, ConfigModule, LogSeverity } from '@gorila-bot/nestjs-core';
 
+const nodeEnv: AppEnvironment = ConfigModule.get('NODE_ENV');
+const isLocal = nodeEnv === AppEnvironment.LOCAL;
+
+/**
+ * // TODO: Configure variables
+ * - appName: Application name
+ * - appPath: Path prefix used at cluster
+ * - appTitle: Title at generated documentation
+ * - appDescription: Description at generated documentation.
+ */
 void AppModule.boot({
-  // TODO: Configure application name
   job: '{{appName}}',
-
-  // TODO: Configure proxy prefix when deploying application on cluster
-  proxyPrefix: ConfigModule.get('NODE_ENV') !== AppEnvironment.LOCAL ? '{{appPath}}/v1' : '',
-
-  // TODO: Configure slack channel for warning+ alerts
-  slack: { channel: 'alert-{{appName}}' },
-
-  // TODO: Configure application title and description
+  proxyPrefix: isLocal ? '' : '{{appPath}}/v1',
+  logs: {
+    filterRequestBody: !isLocal,
+    filterResponseBody: !isLocal,
+  },
+  console: {
+    severity: isLocal ? LogSeverity.TRACE : LogSeverity.DEBUG,
+  },
+  slack: {
+    channel: 'alert-{{appName}}',
+  },
   docs: {
     title: '{{appTitle}}',
     description: '{{appDescription}}',
