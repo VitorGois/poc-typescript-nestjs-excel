@@ -16,7 +16,25 @@ This template offers a boilerplate to quick start new projects with a set of goo
 
 ## Usage
 
-Clone this repository using GitHub templates.
+1\. At GitHub, on this repository page, select **Use this template** and choose target repository name.
+
+2\. At your new repository, under **Settings > General**, disable **Wikis** and **Projects**.
+
+3\. Under **Settings > Collaborators and teams**, add you Tech Lead as **Admin**.
+
+4\. Under **Settings > Actions > General**, choose **Allow all actions and reusable workflows**.
+
+5\. Under **Settings > Branches**, add a new rule as following:
+
+- Branch name pattern: `[msd][ate][sav][tge][eil][rno]*`
+- Protect matching branches, choosing:
+  - Require a pull request before merging
+  - Require approvals (2)
+  - Dismiss stale pull request approvals when new commits are pushed
+  - Require status checks to pass before merging
+  - Require branches to be up to date before merging
+  - Status checks that are required: Search for "Lint"
+  - Require conversation resolution before merging
 
 To continue with code related adjustments simply search for `TODO` keywords within the new repository for further instructions.
 
