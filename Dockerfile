@@ -4,15 +4,19 @@
 FROM node:16-alpine as build
 WORKDIR /build
 
-# Copy registry authentication and package definitions
-COPY .env .npmrc package.json pnpm-lock.yaml /build/
+# Configure registry authentication
+ARG NPM_TOKEN
+ENV NPM_TOKEN_ARG=$NPM_TOKEN
+RUN export NPM_TOKEN="${NPM_TOKEN:-NPM_TOKEN_ARG}"
+
+# Copy source code
+COPY . /build/
 
 # Install dependencies
 RUN npm i -g pnpm dotenv-cli
 RUN dotenv -- pnpm i --frozen-lockfile --ignore-scripts
 
-# Copy source code and build application
-COPY . /build
+# Build application
 RUN pnpm build
 
 # ====================================================
@@ -21,6 +25,11 @@ RUN pnpm build
 FROM node:16-alpine as app
 WORKDIR /app
 EXPOSE 8080
+
+# Configure registry authentication
+ARG NPM_TOKEN
+ENV NPM_TOKEN_ARG=$NPM_TOKEN
+RUN export NPM_TOKEN="${NPM_TOKEN:-NPM_TOKEN_ARG}"
 
 # Copy built application
 COPY --from=build /build/dist /app
