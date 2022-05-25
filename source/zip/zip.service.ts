@@ -1,7 +1,7 @@
 // TODO: Delete this example file
 import { HttpService, Injectable } from '@gorila-bot/nestjs-core';
 
-import { Zip } from './zip.interface';
+import { Zip } from './zip.entity';
 
 @Injectable()
 export class ZipService {
@@ -12,11 +12,11 @@ export class ZipService {
 
   /**
    * Reads target brazilian zip address.
-   * @param zip
+   * @param code
    */
-  public readZip(zip: string): Promise<Zip> {
-    return this.httpService.get(':zip/json', {
-      replacements: { zip },
+  public readZip(code: string): Promise<Zip> {
+    return this.httpService.get(':code/json', {
+      replacements: { code },
     });
   }
 

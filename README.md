@@ -78,8 +78,6 @@ npm config set //registry.npmjs.org/:_authToken=$GORILA_NPM_READ_TOKEN
 pnpm i
 ```
 
-The advantage of using `.env` methodology is being able to locally boot a containerized version of your application without further configurations.
-
 4\. If everything was properly set up, you may run the application either with live reload or containerized:
 
 **Live Reload**

@@ -2,6 +2,7 @@
 import { HttpModule, Module } from '@gorila-bot/nestjs-core';
 
 import { ZipConfig } from './zip.config';
+import { ZipController } from './zip.controller';
 import { ZipService } from './zip.service';
 
 @Module({
@@ -15,6 +16,9 @@ import { ZipService } from './zip.service';
         responseType: 'json',
       }),
     }),
+  ],
+  controllers: [
+    ZipController,
   ],
   providers: [
     ZipConfig,
