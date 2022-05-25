@@ -1,3 +1,4 @@
+/coverage
 /dist
 /node_modules
 
@@ -5,3 +6,4 @@
 .env
 .pnpm-debug.log
 
+test-report.xml

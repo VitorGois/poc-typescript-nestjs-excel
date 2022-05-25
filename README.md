@@ -36,6 +36,8 @@ This template offers a boilerplate to quick start new projects with a set of goo
   - Status checks that are required: Search for "Lint"
   - Require conversation resolution before merging
 
+6\. At `.github/workflows/quality_control.yml`, replace `sonar.projectKey` with the correct key from SonarQube.
+
 To continue with code related adjustments simply search for `TODO` keywords within the new repository for further instructions.
 
 By removing this setup section, further topics of this `README.md` can already be used as your initial template.
