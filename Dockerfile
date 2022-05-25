@@ -6,7 +6,7 @@ WORKDIR /build
 
 # Configure registry authentication
 ARG NPM_TOKEN
-ENV NPM_TOKEN $NPM_TOKEN
+ENV NPM_TOKEN=$NPM_TOKEN
 
 # Copy package manager files
 COPY .npmrc package.json pnpm-lock.yaml /build/
@@ -28,7 +28,7 @@ EXPOSE 8080
 
 # Configure registry authentication
 ARG NPM_TOKEN
-ENV NPM_TOKEN $NPM_TOKEN
+ENV NPM_TOKEN=$NPM_TOKEN
 
 # Copy built application
 COPY --from=build /build/dist /app
