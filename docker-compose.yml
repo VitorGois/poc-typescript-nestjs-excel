@@ -1,0 +1,28 @@
+# =====================================================
+# Build and run source application including variables
+# defined at `.env` file, exposing it at port 8080.
+#
+# Also attaches a Redis instance to simulate proxy
+# caching available at cloud environment.
+#
+# To run compose simply use `pnpm docker`.
+# 
+services:
+  app:
+    container_name: application
+    build:
+      context: .
+      args:
+        - NPM_TOKEN=${NPM_TOKEN}
+    environment:
+      - PROXY_CACHE_ENABLE=true
+      - PROXY_CACHE_REDIS_HOST=redis
+      - PROXY_CACHE_REDIS_PORT=6379
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+
+  redis:
+    container_name: redis
+    image: redis:7.0.0

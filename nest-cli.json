@@ -5,7 +5,6 @@
     "tsConfigPath": "tsconfig.build.json",
     "deleteOutDir": true,
     "assets": [
-      ".env",
       ".npmrc",
       "Dockerfile",
       "LICENSE",
