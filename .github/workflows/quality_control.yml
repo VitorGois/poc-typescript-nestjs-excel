@@ -81,7 +81,7 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args: >
-            -Dsonar.projectKey=gorilainvest_template-nestjs_AYD9HNzS-aDu0dad3dr1
+            -Dsonar.projectKey=${{ github.event.repository.name }}
             -Dsonar.pullrequest.key=${{ github.event.number }}
             -Dsonar.pullrequest.branch=${{ github.HEAD_REF }}
             -Dsonar.pullrequest.base=${{ github.BASE_REF }}

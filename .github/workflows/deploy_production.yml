@@ -4,11 +4,6 @@ on:
   push:
     branches: [ master ]
 
-env:
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-
 jobs:
   quality:
     name: Quality Control
