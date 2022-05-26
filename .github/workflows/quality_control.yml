@@ -1,0 +1,100 @@
+name: Quality Control
+
+on:
+  pull_request:
+    branches: [ master, develop ]
+  workflow_call:
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Run Unit Test
+        run: pnpm test
+
+      - name: Upload Test Coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-coverage
+          path: |
+            coverage
+            test-report.xml
+
+  build:
+    name: Build Dry Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Run Build Dry Run
+        run: pnpm build
+
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Run Lint Check
+        run: pnpm lint
+
+  sonar:
+    name: SonarQube Scan
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Download Test Coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: test-coverage
+
+      - name: Run SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.projectKey=${{ github.event.repository.name }}
+            -Dsonar.pullrequest.key=${{ github.event.number }}
+            -Dsonar.pullrequest.branch=${{ github.HEAD_REF }}
+            -Dsonar.pullrequest.base=${{ github.BASE_REF }}
+            -Dsonar.sources=source
+            -Dsonar.tests=source
+            -Dsonar.test.inclusions=source/**/*.spec.ts
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.testExecutionReportPaths=test-report.xml
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      - name: Run SonarQube Quality Gate
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
