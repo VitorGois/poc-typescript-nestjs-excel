@@ -3,7 +3,6 @@ import { AppModule, HttpStatus, uuidV4 } from '@gorila-bot/nestjs-core';
 
 import { UserCreateDto } from './user.dto';
 import { User } from './user.entity';
-import { UserGender } from './user.enum';
 import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
@@ -24,10 +23,8 @@ describe('UserService', () => {
     it('should create an user', async () => {
       const userData: UserCreateDto = {
         name: 'Jane',
-        surname: 'Doe',
         taxId: '123.456.789-00',
         age: 28,
-        gender: UserGender.FEMALE,
         address: {
           zip: '03030000',
           number: '100',
