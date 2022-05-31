@@ -22,7 +22,7 @@
     "start": "node ./source/main.js || (cd dist && node ./source/main.js)",
     "docker": "docker compose up --build",
     "lint": "export TIMING=1 || set TIMING=1&& eslint **/*.ts --max-warnings=0",
-    "test": "jest --coverage --forceExit --verbose --testTimeout=30000 --config .config/jest/.jestrc.json"
+    "test": "jest --coverage --verbose --testTimeout=30000 --config .config/jest/.jestrc.json"
   },
   "dependencies": {
     "@gorila-bot/nestjs-core": "5.6.0",
@@ -35,11 +35,13 @@
     "@nestjs/cli": "8.2.6",
     "@types/jest": "27.5.1",
     "@types/node": "17.0.35",
+    "@types/supertest": "2.0.12",
     "eslint": "8.16.0",
     "husky": "8.0.1",
     "jest": "28.1.0",
     "jest-sonar-reporter": "2.0.0",
     "lint-staged": "12.4.2",
+    "supertest": "6.2.3",
     "ts-jest": "28.0.3",
     "ts-node-dev": "1.1.8",
     "typescript": "4.6.4"

@@ -1,7 +1,7 @@
 // TODO: Delete this example file
 import { IsEmail, IsIn, IsNotEmpty, IsNumber, IsNumberString, IsObject, IsOptional, IsString, IsUUID, Length, Matches, Max, Min, MinLength, OneOf } from '@gorila-bot/nestjs-core';
 
-import { UserAddressState, UserGender, UserOneOf } from './user.enum';
+import { UserAddressState, UserOneOf } from './user.enum';
 
 export class UserAddress {
 
@@ -50,14 +50,9 @@ export class User {
   @IsString() @MinLength(3)
   public name: string;
 
-  @IsString() @MinLength(3)
-  public surname: string;
-
+  @IsOptional()
   @Matches(/(?:\d{3}\.){2}\d{3}-\d{2}/)
   public taxId: string;
-
-  @IsIn(Object.values(UserGender))
-  public gender: UserGender;
 
   @OneOf(UserOneOf.USER_AGE_BIRTH_YEAR)
   @IsNumber() @Min(0)
