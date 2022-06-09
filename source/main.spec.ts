@@ -1,22 +1,24 @@
 /* eslint-disable no-console */
-import { AppModule, INestApplication } from '@gorila-bot/nestjs-core';
+import { INestApplication } from '@gorila-bot/nestjs-core';
 import { setTimeout } from 'timers/promises';
 
+import { app } from './main';
+
 describe('Main', () => {
-  let app: INestApplication;
+  let nestApp: INestApplication;
   console.log = jest.fn();
 
   describe('boot', () => {
     it('should boot the application successfully', async () => {
       try {
-        app = await AppModule.boot({ port: 0 });
+        nestApp = await app;
       } catch (e) {
         console.error(e);
         throw e;
       }
 
       await setTimeout(500);
-      await app.close();
+      await nestApp.close();
 
       expect(true).toBeTruthy();
     });
