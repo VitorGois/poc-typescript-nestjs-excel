@@ -10,15 +10,19 @@ const isLocal = nodeEnv === AppEnvironment.LOCAL;
  * - appTitle: Title at generated documentation
  * - appDescription: Description at generated documentation.
  */
-void AppModule.boot({
+export const app = AppModule.boot({
   job: '{{appName}}',
-  proxyPrefix: isLocal ? '' : '{{appPath}}/v1',
+  proxyPrefix:
+    /* istanbul ignore next */
+    isLocal ? '' : '{{appPath}}/v1',
   logs: {
     filterRequestBody: !isLocal,
     filterResponseBody: !isLocal,
   },
   console: {
-    severity: isLocal ? LogSeverity.TRACE : LogSeverity.DEBUG,
+    severity:
+      /* istanbul ignore next */
+      isLocal ? LogSeverity.TRACE : LogSeverity.DEBUG,
   },
   slack: {
     channel: 'alert-{{appName}}',
