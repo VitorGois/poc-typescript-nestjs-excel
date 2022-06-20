@@ -1,7 +1,7 @@
 # ====================================================
 # Build Stage
 #
-FROM node:16-alpine as build
+FROM node:18-alpine as build
 WORKDIR /build
 
 # Configure registry authentication
@@ -22,7 +22,7 @@ RUN pnpm build
 # ====================================================
 # Application Stage
 #
-FROM node:16-alpine as app
+FROM node:18-alpine as app
 WORKDIR /app
 EXPOSE 8080
 

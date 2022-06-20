@@ -1,7 +1,12 @@
 import { AppEnvironment, AppModule, ConfigModule, LogSeverity } from '@gorila-bot/nestjs-core';
 
 const nodeEnv: AppEnvironment = ConfigModule.get('NODE_ENV');
-const isLocal = nodeEnv === AppEnvironment.LOCAL;
+
+const isCloud = [
+  AppEnvironment.DEVELOPMENT,
+  AppEnvironment.STAGING,
+  AppEnvironment.PRODUCTION,
+].includes(nodeEnv);
 
 /**
  * // TODO: Configure variables
@@ -12,17 +17,13 @@ const isLocal = nodeEnv === AppEnvironment.LOCAL;
  */
 export const app = AppModule.boot({
   job: '{{appName}}',
-  proxyPrefix:
-    /* istanbul ignore next */
-    isLocal ? '' : '{{appPath}}/v1',
+  proxyPrefix: /* istanbul ignore next */ isCloud ? '{{appPath}}/v1' : '',
   logs: {
-    filterRequestBody: !isLocal,
-    filterResponseBody: !isLocal,
+    filterRequestBody: isCloud,
+    filterResponseBody: isCloud,
   },
   console: {
-    severity:
-      /* istanbul ignore next */
-      isLocal ? LogSeverity.TRACE : LogSeverity.DEBUG,
+    severity: /* istanbul ignore next */ isCloud ? LogSeverity.DEBUG : LogSeverity.TRACE,
   },
   slack: {
     channel: 'alert-{{appName}}',
