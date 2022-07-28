@@ -16,9 +16,11 @@ This template offers a boilerplate to quick start new projects with a set of goo
 
 ## Usage
 
-1\. At GitHub, on this repository page, select **Use this template** and choose target repository name.
+### GitHub
 
-2\. At your new repository, under **Settings > General**, disable **Wikis** and **Projects**.
+1\. On this repository page, select **Use this template** and choose target repository name.
+
+2\. At your new repository, under **Settings > General**, disable **Wikis**, **Issues** and **Projects**.
 
 3\. Under **Settings > Collaborators and teams**, add you Tech Lead as **Admin**.
 
@@ -33,8 +35,18 @@ This template offers a boilerplate to quick start new projects with a set of goo
   - Dismiss stale pull request approvals when new commits are pushed
   - Require status checks to pass before merging
   - Require branches to be up to date before merging
-  - Status checks that are required: Search for "Lint"
+  - Status checks that are required: Search for "Quality" and add all that appear
   - Require conversation resolution before merging
+
+### SonarQube
+
+1\. At SonarQube, open your project and navigate to **Project Settings > General Settings**.
+
+2\. Under **DevOps Platform Integration**, choose the GitHub repository at **Configuration name** and **Repository name**.
+
+3\. Navigate to **Project Settings > Quality Gate** and choose **Always use a specific Quality Gate > Product Backend**.
+
+### Code
 
 To continue with code related adjustments simply search for `TODO` keywords within the new repository for further instructions.
 
