@@ -23,10 +23,7 @@ export const app = AppModule.boot({
     filterResponseBody: isCloud,
   },
   console: {
-    severity: /* istanbul ignore next */ isCloud ? LogSeverity.DEBUG : LogSeverity.TRACE,
-  },
-  slack: {
-    channel: 'alert-{{appName}}',
+    severity: /* istanbul ignore next */ isCloud ? LogSeverity.HTTP : LogSeverity.TRACE,
   },
   docs: {
     title: '{{appTitle}}',
