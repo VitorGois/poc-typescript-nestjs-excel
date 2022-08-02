@@ -4,7 +4,7 @@ specifiers:
   '@commitlint/cli': 17.0.3
   '@commitlint/config-conventional': 17.0.3
   '@gorila-bot/eslint-config-gorila-ts': 1.1.2
-  '@gorila-bot/nestjs-core': 5.7.3
+  '@gorila-bot/nestjs-core': 5.8.2
   '@gorila-bot/nestjs-proxies': 5.17.0
   '@nestjs/cli': 9.0.0
   '@types/jest': 28.1.6
@@ -21,8 +21,8 @@ specifiers:
   typescript: 4.7.4
 
 dependencies:
-  '@gorila-bot/nestjs-core': 5.7.3
-  '@gorila-bot/nestjs-proxies': 5.17.0_qz7gspy7mkdyvrx5d5lssopeca
+  '@gorila-bot/nestjs-core': 5.8.2
+  '@gorila-bot/nestjs-proxies': 5.17.0_phuck7x5gqxj7s7chjzp4hhtum
 
 devDependencies:
   '@commitlint/cli': 17.0.3
@@ -1221,8 +1221,8 @@ packages:
       - typescript
     dev: true
 
-  /@gorila-bot/nestjs-core/5.7.3:
-    resolution: {integrity: sha512-19FVqwVf6jwKBuArA7ba8ElS6/dnGyTHzv6uBkrUoTR8sQMgYPV7dUdwy2g+T6sfBoHIdB19rZ5NEwtUBQFsWQ==}
+  /@gorila-bot/nestjs-core/5.8.2:
+    resolution: {integrity: sha512-FLxQpUpsvZZSGtPYWAjk5s0Ux1WQJb2ifTSFCuIL3QHPj4mGBdOJ6N3igrtElocH3VC3kn57fYlss8j1CSx+Cw==}
     dependencies:
       '@aws-sdk/client-ssm': 3.41.0
       '@nestjs/common': 8.4.4_kgmvgmqc4iohdboj3f7yqhrie4
@@ -1264,23 +1264,23 @@ packages:
       - swagger-ui-express
     dev: false
 
-  /@gorila-bot/nestjs-proxies/5.17.0_qz7gspy7mkdyvrx5d5lssopeca:
+  /@gorila-bot/nestjs-proxies/5.17.0_phuck7x5gqxj7s7chjzp4hhtum:
     resolution: {integrity: sha512-/m4HrPHH2kVyvVvV9KlkD6icl/cgQwAU6kQgI5JAenxBa4G61gPaoeJKq/ZoF57p0CaoW7Eru8wUS2/4fA9cxw==}
     peerDependencies:
       '@gorila-bot/nestjs-core': ^5.5.0
     dependencies:
-      '@gorila-bot/nestjs-core': 5.7.3
-      '@gorila-bot/nestjs-redis': 5.2.0_qz7gspy7mkdyvrx5d5lssopeca
+      '@gorila-bot/nestjs-core': 5.8.2
+      '@gorila-bot/nestjs-redis': 5.2.0_phuck7x5gqxj7s7chjzp4hhtum
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@gorila-bot/nestjs-redis/5.2.0_qz7gspy7mkdyvrx5d5lssopeca:
+  /@gorila-bot/nestjs-redis/5.2.0_phuck7x5gqxj7s7chjzp4hhtum:
     resolution: {integrity: sha512-ZwVhLVIx14wG3imrckdfEkp+awf33FC0JB8cCIvkY3kNbOF4dUXuw/gT90ZyKXZnJt60xPInChCAGrmxUWhftQ==}
     peerDependencies:
       '@gorila-bot/nestjs-core': ^5.3.0
     dependencies:
-      '@gorila-bot/nestjs-core': 5.7.3
+      '@gorila-bot/nestjs-core': 5.8.2
       ioredis: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -2926,7 +2926,7 @@ packages:
   /class-validator/0.13.2:
     resolution: {integrity: sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw==}
     dependencies:
-      libphonenumber-js: 1.10.10
+      libphonenumber-js: 1.10.11
       validator: 13.7.0
     dev: false
 
@@ -3995,7 +3995,7 @@ packages:
       process-warning: 1.0.0
       proxy-addr: 2.0.7
       rfdc: 1.3.0
-      secure-json-parse: 2.4.0
+      secure-json-parse: 2.5.0
       semver: 7.3.7
       tiny-lru: 8.0.2
     transitivePeerDependencies:
@@ -5352,8 +5352,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /libphonenumber-js/1.10.10:
-    resolution: {integrity: sha512-JzYUapWcHkUe5n6OFqxJtHfCfuU0juqkqc9P+hrfzgmJODaREYLUgceiNAmIGx5j3Gjp7KVxi3koFo7OJFSTxg==}
+  /libphonenumber-js/1.10.11:
+    resolution: {integrity: sha512-ehoihx4HpRXO6FH/uJ0EnaEV4dVU+FDny+jv0S6k9JPyPsAIr0eXDAFvGRMBKE1daCtyHAaFSKCiuCxrOjVAzQ==}
     dev: false
 
   /light-my-request/4.9.0:
@@ -6396,8 +6396,8 @@ packages:
       ajv-keywords: 3.5.2_ajv@6.12.6
     dev: true
 
-  /secure-json-parse/2.4.0:
-    resolution: {integrity: sha512-Q5Z/97nbON5t/L/sH6mY2EacfjVGwrCcSi5D3btRO2GZ8pf1K1UN7Z9H5J57hjVU2Qzxr1xO+FmBhOvEkzCMmg==}
+  /secure-json-parse/2.5.0:
+    resolution: {integrity: sha512-ZQruFgZnIWH+WyO9t5rWt4ZEGqCKPwhiw+YbzTwpmT9elgLrLcfuyUiSnwwjUiVy9r4VM3urtbNF1xmEh9IL2w==}
     dev: false
 
   /semver-store/0.3.0:

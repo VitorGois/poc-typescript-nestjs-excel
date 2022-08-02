@@ -19,8 +19,8 @@ export const app = AppModule.boot({
   job: '{{appName}}',
   proxyPrefix: /* istanbul ignore next */ isCloud ? '{{appPath}}/v1' : '',
   logs: {
-    filterRequestBody: isCloud,
-    filterResponseBody: isCloud,
+    enableRequestBody: !isCloud,
+    enableResponseBody: !isCloud,
   },
   console: {
     severity: /* istanbul ignore next */ isCloud ? LogSeverity.HTTP : LogSeverity.TRACE,
