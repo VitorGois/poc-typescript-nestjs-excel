@@ -25,7 +25,7 @@
     "test": "jest --coverage --verbose --testTimeout=30000 --config .config/jest/.jestrc.json"
   },
   "dependencies": {
-    "@gorila-bot/nestjs-core": "5.8.2",
+    "@gorila-bot/nestjs-core": "5.8.4",
     "@gorila-bot/nestjs-proxies": "5.17.0"
   },
   "devDependencies": {
