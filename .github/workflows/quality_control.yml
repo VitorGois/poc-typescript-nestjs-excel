@@ -95,7 +95,6 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Run SonarQube Quality Gate
-        if: github.event.repository.name != 'master' && github.event.repository.name != 'develop'
         uses: sonarsource/sonarqube-quality-gate-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
