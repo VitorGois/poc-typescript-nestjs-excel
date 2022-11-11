@@ -1,0 +1,23 @@
+name: Delete feature branches
+
+on: 
+  pull_request:
+    branches: [ develop, master ]
+    types: [closed]
+
+jobs:
+  delete-feature-branch:
+    name: Delete feature branch
+    if: >
+      ( github.base_ref == 'master' && github.head_ref != 'develop' ) || 
+      ( github.base_ref == 'develop' && !github.event.pull_request.merged )
+        
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: delete branch
+        uses: SvanBoxel/delete-merged-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
