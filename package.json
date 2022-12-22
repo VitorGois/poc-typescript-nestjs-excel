@@ -36,6 +36,7 @@
     "@types/jest": "28.1.6",
     "@types/node": "18.6.2",
     "@types/supertest": "2.0.12",
+    "commitlint-plugin-function-rules": "1.7.1",
     "eslint": "8.20.0",
     "husky": "8.0.1",
     "jest": "28.1.3",
