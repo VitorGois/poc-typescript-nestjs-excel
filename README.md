@@ -166,7 +166,7 @@ pnpm lint
 
 ### Committing
 
-Commit messages follows conventions of [@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional), which in short accepts one of its `types` followed by a scope (optional) and a description.
+Commit messages follows conventions of [@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional), which in short accepts one of its `types` followed by a scope and a description.
 
 **Types**
 
@@ -178,7 +178,32 @@ build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test
 
 ```sh
 feat(user): add user manipulation
-fix: JSON parsing exception
+fix(zip): JSON parsing exception
 chore(auth): change member accessibility
-ci: fix wrong build definition
+ci(dependency): fix wrong build definition
+```
+
+
+### Naming Branches
+
+Write name branches with the JIRA task id attached, this will cause your commit messages to be automatically modified with the task id. If your commit is not related to any task, your message will automatically be identified as no-task
+
+**Names**
+
+```sh
+feature/BACK-1020, hotfix/BACK-1020, refactor/BACK-1020, BACK-1020, back-1020
+```
+
+**Examples**
+
+```sh
+branch name: feature/BACK-1020
+commit message: "feat(user): add user manipulation"
+commited message: "feat(user): add user manipulation #BACK-1020"
+```
+
+```sh
+branch name: feature/user-manipulation
+commit message: "feat(user): add user manipulation"
+commited message: "feat(user): add user manipulation #no-task"
 ```
