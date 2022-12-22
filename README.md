@@ -64,13 +64,20 @@ By removing this setup section, further topics of this `README.md` can already b
 
 1\. Copy `.env.schema` as `.env` and adjust environment variables according to instructions provided on itself.
 
-2\. Install `pnpm` package manager:
+2\. Start [sdk](https://github.com/gorilainvest/pbe-sdk) repository as submodule:
+
+```sh
+git submodule init
+git submodule update
+```
+
+3\. Install `pnpm` package manager:
 
 ```sh
 npm i -g pnpm
 ```
 
-3\. Install dependencies, Gorila private registry must be authenticated either globally or at `.env`:
+4\. Install dependencies, Gorila private registry must be authenticated either globally or at `.env`:
 
 **.env**
 
