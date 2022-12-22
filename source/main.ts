@@ -16,8 +16,7 @@ const isCloud = [
  * - appDescription: Description at generated documentation.
  */
 export const app = AppModule.boot({
-  job: '{{appName}}',
-  proxyPrefix: /* istanbul ignore next */ isCloud ? '{{appPath}}/v1' : '',
+  name: '{{appName}}',
   logs: {
     enableRequestBody: !isCloud,
     enableResponseBody: !isCloud,

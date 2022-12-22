@@ -1,6 +1,8 @@
 // TODO: Delete this example file
-import { Controller, Get } from '@gorila-bot/nestjs-core';
-import { BenchmarkService } from '@gorila-bot/nestjs-proxies';
+import { ApiOkResponse, Controller, Get } from '@gorila-bot/nestjs-core';
+
+import { BenchmarkPageDto } from '../../sdk/benchmark/benchmark.dto.out';
+import { BenchmarkProxy } from '../../sdk/benchmark/benchmark.proxy';
 
 /**
  * You may use this controller to debug proxy cache functionality.
@@ -12,14 +14,13 @@ import { BenchmarkService } from '@gorila-bot/nestjs-proxies';
 export class BenchmarkController {
 
   public constructor(
-    private readonly benchmarkService: BenchmarkService,
+    private readonly benchmarkProxy: BenchmarkProxy,
   ) { }
 
-  @Get({
-    response: { type: [ String ] },
-  })
-  public getBenchmark(): Promise<string[]> {
-    return this.benchmarkService.readBenchmarks();
+  @Get()
+  @ApiOkResponse({ type: BenchmarkPageDto })
+  public getBenchmark(): Promise<BenchmarkPageDto> {
+    return this.benchmarkProxy.readBenchmark({});
   }
 
 }
