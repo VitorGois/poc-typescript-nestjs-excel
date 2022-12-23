@@ -25,3 +25,4 @@ jobs:
           sshkey: ${{ secrets.ACTIONS_CHECKOUT_SSH }}
           ecr-access-key-id: ${{ secrets.MANAGEMENT_ECR_AWS_ACCESS_KEY_ID }}
           ecr-access-key: ${{ secrets.MANAGEMENT_ECR_AWS_SECRET_ACCESS_KEY }}
+          gh-token: ${{ secrets.GH_TOKEN }}
