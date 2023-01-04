@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          submodules: recursive
 
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
@@ -40,6 +43,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          submodules: recursive
 
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
@@ -54,6 +60,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          submodules: recursive
 
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
@@ -71,6 +80,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+          submodules: recursive
 
       - name: Download Test Coverage
         uses: actions/download-artifact@v3

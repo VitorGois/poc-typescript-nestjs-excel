@@ -1,12 +1,12 @@
 // TODO: Delete this example file
 import { Module } from '@gorila-bot/nestjs-core';
-import { BenchmarkModule } from '@gorila-bot/nestjs-proxies';
 
+import { BenchmarkSdk } from '../../sdk/benchmark/benchmark.sdk';
 import { BenchmarkController } from './benchmark.controller';
 
 @Module({
   imports: [
-    BenchmarkModule,
+    BenchmarkSdk,
   ],
   controllers: [
     BenchmarkController,

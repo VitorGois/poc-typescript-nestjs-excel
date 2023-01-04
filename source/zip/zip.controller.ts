@@ -1,5 +1,5 @@
 // TODO: Delete this example file
-import { Controller, Get, Param } from '@gorila-bot/nestjs-core';
+import { ApiOkResponse, Controller, Get, Param } from '@gorila-bot/nestjs-core';
 
 import { Zip } from './zip.entity';
 import { ZipService } from './zip.service';
@@ -11,9 +11,8 @@ export class ZipController {
     private readonly zipService: ZipService,
   ) { }
 
-  @Get(':code', {
-    response: { type: Zip },
-  })
+  @Get(':code')
+  @ApiOkResponse({ type: Zip })
   public getZip(@Param('code') code: string): Promise<Zip> {
     return this.zipService.readZip(code);
   }

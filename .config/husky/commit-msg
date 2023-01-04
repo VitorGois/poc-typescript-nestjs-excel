@@ -2,3 +2,18 @@
 . "$(dirname "$0")/_/husky.sh"
 
 ./node_modules/@commitlint/cli/cli.js --config .config/commitlint/.commitlintrc.json --edit $1
+
+# Get branch name, get task-id after slash and set uppercase
+# E.g Feature/back-180 -> BACK-180
+BRANCH_NAME=$(git branch | grep '*' | sed 's/* //' | sed 's/.*\///' | sed 's/\(.*\)/\U\1/')
+
+# Get 'BACK' from 'BACK-123'
+BRANCH_PREFIX=$(echo $BRANCH_NAME | sed 's/\-[^\-]*$//')
+
+# Append #task-id or #no-task in commit message
+if [ $BRANCH_PREFIX = BACK ];
+then 
+  sed -i.bak -e "s/$/ #$BRANCH_NAME/" $1
+else 
+  sed -i.bak -e "s/$/ #no-task/" $1
+fi
