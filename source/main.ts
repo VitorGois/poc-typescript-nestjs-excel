@@ -10,9 +10,8 @@ const isCloud = [
 
 /**
  * // TODO: Configure variables
- * - appName: Application name
- * - appPath: Path prefix used at cluster
- * - appTitle: Title at generated documentation
+ * - appName: Application name in kebab-case
+ * - appTitle: Friendly title at generated documentation
  * - appDescription: Description at generated documentation.
  */
 export const app = AppModule.boot({
@@ -22,7 +21,9 @@ export const app = AppModule.boot({
     enableResponseBody: !isCloud,
   },
   console: {
-    severity: /* istanbul ignore next */ isCloud ? LogSeverity.HTTP : LogSeverity.TRACE,
+    severity: /* istanbul ignore next */ isCloud
+      ? LogSeverity.HTTP
+      : LogSeverity.TRACE,
   },
   docs: {
     title: '{{appTitle}}',
