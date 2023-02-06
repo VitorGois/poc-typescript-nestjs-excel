@@ -25,7 +25,8 @@
     "test": "jest --coverage --verbose --testTimeout=30000 --config .config/jest/.jestrc.json"
   },
   "dependencies": {
-    "@gorila-bot/nestjs-core": "6.1.0"
+    "@gorila-bot/nestjs-core": "6.1.0",
+    "exceljs": "4.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
